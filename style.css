@@ -12,16 +12,15 @@
 }
 
 body .gameboard {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: var(--grid-margin);
-	margin-top: 7rem; /* final adjustment necessary */
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+
+	/* needs later adjustments: */
+	gap: 30px;
+	margin-top: 200px;
 }
 
-.gameboard .topRow,
-.gameboard .middleRow,
-.gameboard .bottomRow {
-	display: flex;
-	gap: var(--grid-margin);
+.squares {
+	border: red 1px solid;
+	padding: 10px;
 }
