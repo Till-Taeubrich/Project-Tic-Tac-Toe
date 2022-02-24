@@ -31,12 +31,23 @@ const gameboard = (function(){
   // gameboard.updateBoardContent(gameboard.boardContent);
   
 // -----------------------gameModule
-const game = (function(){
-})
+// const game = (function(){
+// })
 
 
-// -----------------------playerFactory
-function player (name){
-  let roundsWon = 0;
-  return {name, roundsWon};
-}
+// -----------------------playerModule
+const players = (function (){
+
+  function _playerFactory (name, playerNumber){
+    const roundsWon = 0;
+    return {name, playerNumber, roundsWon};
+  };
+
+  const playerOne = _playerFactory('pete', 1)
+  const playerTwo = _playerFactory('robin', 2)
+
+  return {
+    playerOne: playerOne,
+    playerTwo: playerTwo,
+  }
+})();
