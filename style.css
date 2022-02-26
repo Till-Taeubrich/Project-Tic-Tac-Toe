@@ -17,10 +17,10 @@ body .gameboard {
 
 	/* needs later adjustments: */
 	gap: 30px;
-	margin-top: 200px;
+	margin-top: 150px;
 }
 
 .squares {
 	border: red 1px solid;
-	padding: 10px;
+	padding: 50px;
 }
