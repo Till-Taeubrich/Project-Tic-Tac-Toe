@@ -1,7 +1,3 @@
-:root {
-	--grid-margin: 10rem;
-}
-
 * {
 	margin: 0px;
 	padding: 0px;
@@ -11,16 +7,55 @@
 		sans-serif;
 }
 
+body {
+	text-align: center;
+}
+
+.preGame.hidden {
+	display: none;
+}
+
+.preGame .playerNames {
+	display: flex;
+}
+
+.preGame .playerNames .playerOne,
+.preGame .playerNames .playerTwo {
+	padding: 3rem;
+	flex: 1;
+}
+
+.startGameButton,
+.restartGameButton {
+	margin-top: 4rem;
+	border: none;
+	padding: 1em 2em;
+	background-color: rgb(209, 4, 4);
+}
+
+.startGameButton:hover,
+.restartGameButton:hover {
+	background-color: red;
+}
+
+.startGameButton:active,
+.restartGameButton:active {
+	transform: scale(0.98);
+}
+
 body .gameboard {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-
 	/* needs later adjustments: */
 	gap: 30px;
 	margin-top: 150px;
 }
 
-.squares {
+body .gameboardScreen.hidden {
+	display: none;
+}
+
+body .gameboard .squares {
 	border: red 1px solid;
 	padding: 50px;
 }
