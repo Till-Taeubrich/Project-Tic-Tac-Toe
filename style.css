@@ -2,60 +2,178 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-		sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+		'Open Sans', 'Helvetica Neue', sans-serif;
+	font-size: 1rem;
+	color: rgb(80, 80, 80);
 }
 
 body {
+	height: 100vh;
+	padding: 1rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 4fr 4fr 1fr;
+	gap: 2rem;
+	background: radial-gradient(#f7fee7, #fdba74);
+}
+
+body .headline {
+	grid-area: 1 / 2 / 2 / 4;
+	text-align: center;
+	font-size: 3.5rem;
+}
+
+body .player {
+	text-align: center;
+	overflow: hidden;
+	height: 20rem;
+}
+
+body .player-one {
+	grid-area: 2 / 1 / 3 /2;
+}
+
+body .player-two {
+	grid-area: 2/4/3/5;
+}
+
+body .player-one-indicator {
+	margin-bottom: 0.5rem;
+}
+body .player-two-indicator {
+	margin-bottom: 0.5rem;
+}
+
+body .player-one-name {
+	margin-bottom: 0.3rem;
+}
+body .player-two-name {
+	margin-bottom: 0.3rem;
+}
+
+body .player img {
+	width: 3rem;
+	filter: invert(29%) sepia(28%) saturate(0%) hue-rotate(161deg) brightness(95%) contrast(89%);
+	transition: filter 0.3s;
+}
+body .player img.turn {
+	filter: invert(26%) sepia(39%) saturate(3820%) hue-rotate(340deg) brightness(94%) contrast(105%);
+}
+
+body .player h2 {
+	font-size: 1.5rem;
+}
+
+body .pre-game {
+	grid-area: 2 / 2 / 4 / 4;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+body .pre-game input {
 	text-align: center;
 }
 
-.preGame.hidden {
+body .pre-game .player-one-input,
+body .pre-game .player-two-input {
+	border: none;
+	border-radius: 6px;
+	font-size: 2rem;
+	outline: none;
+}
+
+body .pre-game .versus {
+	text-align: center;
+	font-size: 4rem;
+}
+
+body .pre-game .player-one-input,
+body .pre-game .versus,
+body .pre-game .player-two-input {
+	margin-bottom: 4rem;
+}
+
+body .start-game-button,
+body .restart-game-button {
+	grid-area: 4/2/5/4;
+	border: none;
+	padding: 1em 2em;
+	background-color: #facc15;
+	border: 1px rgb(114, 114, 114) dotted;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+body .start-game-button:hover,
+body .restart-game-button:hover {
+	background-color: #e1b300;
+}
+
+body .start-game-button:active,
+body .restart-game-button:active {
+	transform: scale(0.99);
+}
+
+.hidden {
 	display: none;
 }
 
-.preGame .playerNames {
-	display: flex;
-}
-
-.preGame .playerNames .playerOne,
-.preGame .playerNames .playerTwo {
-	padding: 3rem;
-	flex: 1;
-}
-
-.startGameButton,
-.restartGameButton {
-	margin-top: 4rem;
-	border: none;
-	padding: 1em 2em;
-	background-color: rgb(209, 4, 4);
-}
-
-.startGameButton:hover,
-.restartGameButton:hover {
-	background-color: red;
-}
-
-.startGameButton:active,
-.restartGameButton:active {
-	transform: scale(0.98);
+/* gameboard */
+body .gameboard-screen {
+	justify-self: center;
+	grid-area: 2 / 2 / 4 / 4;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 body .gameboard {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	/* needs later adjustments: */
-	gap: 30px;
-	margin-top: 150px;
-}
-
-body .gameboardScreen.hidden {
-	display: none;
+	gap: 1rem;
 }
 
 body .gameboard .squares {
-	border: red 1px solid;
-	padding: 50px;
+	border: burlywood 1px solid;
+	border-radius: 10px;
+	width: 7rem;
+	height: 7rem;
+	font-size: 4rem;
+	text-align: center;
+	line-height: 7rem;
+	vertical-align: center;
+}
+
+.player-one-counter,
+.player-two-counter {
+	margin-top: 1.5rem;
+}
+
+.winner-announcement-one,
+.winner-announcement-two {
+	color: orangered;
+	transform: translateY(0);
+	transition: transform 0.8s;
+}
+
+.winner-announcement-one.off-screen,
+.winner-announcement-two.off-screen {
+	transform: translateY(20rem);
+}
+
+.draw-announcement-one,
+.draw-announcement-two {
+	color: rgb(240, 164, 2);
+	transform: translateY(-1.9rem);
+	transition: transform 0.8s;
+}
+
+.draw-announcement-one.off-screen,
+.draw-announcement-two.off-screen {
+	transform: translateY(20rem);
 }
