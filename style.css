@@ -102,6 +102,7 @@ body .restart-game-button {
 	grid-area: 4/2/5/4;
 	border: none;
 	padding: 1em 2em;
+	margin-bottom: 1rem;
 	background-color: #facc15;
 	border: 1px rgb(114, 114, 114) dotted;
 	border-radius: 20px;
