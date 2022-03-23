@@ -246,9 +246,7 @@ const players = (function () {
 	};
 
 	function updatePlayerNames() {
-		console.log('hi');
 		if (gameboard.playerOneInput.value != '' && gameboard.playerTwoInput.value != '') {
-			console.log('hi');
 			gameboard.playerOneName.textContent = document.querySelector('.player-one-input').value;
 			gameboard.playerTwoName.textContent = document.querySelector('.player-two-input').value;
 			gameboard.loadGameScreen();
