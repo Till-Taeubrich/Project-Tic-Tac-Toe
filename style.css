@@ -19,7 +19,7 @@ body {
 }
 
 body .headline {
-	grid-area: 1 / 2 / 2 / 4;
+	grid-area: 1 / 1 / 2 / 5;
 	text-align: center;
 	font-size: 3.5rem;
 }
@@ -27,7 +27,7 @@ body .headline {
 body .player {
 	text-align: center;
 	overflow: hidden;
-	height: 20rem;
+	translate: 1s;
 }
 
 body .player-one {
@@ -100,7 +100,6 @@ body .pre-game .player-two-input {
 body .start-game-button,
 body .restart-game-button {
 	grid-area: 4/2/5/4;
-	border: none;
 	padding: 1em 2em;
 	margin-bottom: 1rem;
 	background-color: #facc15;
@@ -127,16 +126,17 @@ body .restart-game-button:active {
 body .gameboard-screen {
 	justify-self: center;
 	grid-area: 2 / 2 / 4 / 4;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	margin: 1rem;
 }
 
 body .gameboard {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 1rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 body .gameboard .squares {
@@ -177,4 +177,57 @@ body .gameboard .squares {
 .draw-announcement-one.off-screen,
 .draw-announcement-two.off-screen {
 	transform: translateY(20rem);
+}
+
+@media (max-width: 900px) {
+	.mobile-hidden {
+		display: none;
+	}
+
+	body .pre-game .player-one-input,
+	body .pre-game .player-two-input {
+		font-size: 1.5rem;
+	}
+
+	body .restart-game-button {
+		position: absolute;
+		width: 6rem;
+		height: 6rem;
+		bottom: -0.5rem;
+		left: 0.5rem;
+		font-size: 0.8em;
+	}
+
+	body .player-one.mobile-gameboard {
+		grid-area: 3 / 2 / 4 / 4;
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+		transform: translateX(-50%);
+	}
+
+	body .player-one.mobile-gameboard > * {
+		margin: 0;
+	}
+
+	body .player-two.mobile-gameboard {
+		rotate: 180deg;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(50%);
+	}
+	body .player-two.mobile-gameboard > * {
+		margin: 0;
+	}
+}
+
+@media (max-width: 600px) {
+	body .player-one.mobile-gameboard {
+		bottom: -50px;
+	}
+
+	body .player-two.mobile-gameboard {
+		top: -50px;
+	}
 }

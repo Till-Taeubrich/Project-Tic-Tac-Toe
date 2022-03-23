@@ -4,27 +4,36 @@ const gameboard = (function () {
 	const playerTwoIndicator = document.querySelector('.player-two-indicator');
 	const squares = Array.from(document.querySelectorAll('.squares'));
 	const _startGameButton = document.querySelector('.start-game-button');
+	const playerOneInput = document.querySelector('.player-one-input');
+	const playerTwoInput = document.querySelector('.player-two-input');
 	const _restartGameButton = document.querySelector('.restart-game-button');
 	const _preGameScreen = document.querySelector('.pre-game');
 	const _gameboardScreen = document.querySelector('.gameboard-screen');
-	const _playerOneName = document.querySelector('.player-one-name');
-	const _playerTwoName = document.querySelector('.player-two-name');
+	const _playerOne = document.querySelector('.player-one');
+	const _playerTwo = document.querySelector('.player-two');
+	const playerOneName = document.querySelector('.player-one-name');
+	const playerTwoName = document.querySelector('.player-two-name');
 	const _playerOneCounter = document.querySelector('.player-one-counter');
 	const _playerTwoCounter = document.querySelector('.player-two-counter');
 	const winnerAnnouncementOne = document.querySelector('.winner-announcement-one');
 	const winnerAnnouncementTwo = document.querySelector('.winner-announcement-two');
 	const drawAnnouncementOne = document.querySelector('.draw-announcement-one');
 	const drawAnnouncementTwo = document.querySelector('.draw-announcement-two');
+	const _headline = document.querySelector('.headline');
 
 	function loadGameScreen() {
 		_preGameScreen.classList.add('hidden');
 		_startGameButton.classList.add('hidden');
+		_headline.classList.add('mobile-hidden');
+		_playerOne.classList.remove('mobile-hidden');
+		_playerTwo.classList.remove('mobile-hidden');
+		_playerOne.classList.add('mobile-gameboard');
+		_playerTwo.classList.add('mobile-gameboard');
 
 		_gameboardScreen.classList.remove('hidden');
 		_restartGameButton.classList.remove('hidden');
 		_startGameButton.classList.add('hidden');
 		playerOneIndicator.classList.add('turn');
-		displayPlayerNames();
 
 		_playerOneCounter.textContent = '0';
 		_playerTwoCounter.textContent = '0';
@@ -32,8 +41,6 @@ const gameboard = (function () {
 
 	function displayPlayerNames() {
 		players.updatePlayerNames();
-		_playerOneName.textContent = players.playerOne.name;
-		_playerTwoName.textContent = players.playerTwo.name;
 	}
 
 	function addPointToWinner(winner) {
@@ -65,7 +72,7 @@ const gameboard = (function () {
 	}
 
 	// EventListener
-	_startGameButton.addEventListener('click', loadGameScreen);
+	_startGameButton.addEventListener('click', displayPlayerNames);
 	_restartGameButton.addEventListener('click', () => {
 		game.resetGame();
 	});
@@ -83,6 +90,11 @@ const gameboard = (function () {
 		winnerAnnouncementTwo: winnerAnnouncementTwo,
 		drawAnnouncementOne: drawAnnouncementOne,
 		drawAnnouncementTwo: drawAnnouncementTwo,
+		playerOneInput: playerOneInput,
+		playerTwoInput: playerTwoInput,
+		loadGameScreen: loadGameScreen,
+		playerOneName: playerOneName,
+		playerTwoName: playerTwoName,
 	};
 })();
 
@@ -234,8 +246,21 @@ const players = (function () {
 	};
 
 	function updatePlayerNames() {
-		playerOne.name = document.querySelector('.player-one-input').value;
-		playerTwo.name = document.querySelector('.player-two-input').value;
+		console.log('hi');
+		if (gameboard.playerOneInput.value != '' && gameboard.playerTwoInput.value != '') {
+			console.log('hi');
+			gameboard.playerOneName.textContent = document.querySelector('.player-one-input').value;
+			gameboard.playerTwoName.textContent = document.querySelector('.player-two-input').value;
+			gameboard.loadGameScreen();
+			return;
+		}
+
+		if (gameboard.playerOneInput.value == '') {
+			gameboard.playerOneInput.style.outline = 'red 2px solid';
+		}
+		if (gameboard.playerTwoInput.value == '') {
+			gameboard.playerTwoInput.style.outline = 'red 2px solid';
+		}
 	}
 
 	return {
