@@ -140,7 +140,7 @@ body .gameboard {
 }
 
 body .gameboard .squares {
-	border: burlywood 1px solid;
+	border: rgb(0, 0, 0) 1.3px solid;
 	border-radius: 10px;
 	width: 7rem;
 	height: 7rem;
